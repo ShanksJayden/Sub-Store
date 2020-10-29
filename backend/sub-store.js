@@ -1670,7 +1670,7 @@ function QX_Producer() {
                     proxy.cipher
                 },password=${proxy.password}${obfs_opts}${
                     proxy.tfo ? ",fast-open=true" : ",fast-open=false"
-                }${proxy.udp ? ",udp-relay=true" : ",udp-relay=false"}, tag=${
+                }${proxy.udp ? ",udp-relay=true" : ",udp-relay=false"},tag=${
                     proxy.name
                 }`;
             case "ssr":
@@ -1698,7 +1698,7 @@ function QX_Producer() {
                         },tls-verification=${proxy.scert ? "false" : "true"}`;
                     } else {
                         // ws
-                        obfs_opts = `,obfs=ws,${
+                        obfs_opts = `,obfs=ws${
                             proxy["ws-headers"].Host ? ",obfs-host=" + proxy["ws-headers"].Host : ""
                         }${
                             proxy["ws-path"] ? ",obfs-uri=" + proxy["ws-path"] : ""
@@ -1835,7 +1835,7 @@ function Surge_Producer() {
                         );
                     }
                 }
-                return `${proxy.name}=ss,${proxy.server}, ${proxy.port},encrypt-method=${
+                return `${proxy.name}=ss,${proxy.server},${proxy.port},encrypt-method=${
                     proxy.cipher
                 },password=${proxy.password}${obfs_opts},tfo=${
                     proxy.tfo || "false"
